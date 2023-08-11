@@ -4,16 +4,16 @@ select * from #log where Tip='P' order by tarih
 select * from #log where Tip='C' order by tarih 
 
 
--- select MIN(Tarih) from #log WHERE Quantity <> 0 --Sipariş sayısı 0 olmayan ilk tarihi bulan komut
+-- select MIN(Tarih) from #log WHERE Quantity <> 0 --SipariÅŸ sayÄ±sÄ± 0 olmayan ilk tarihi bulan komut
 
 --fifo
 declare @i int = 1, @partNo int, @transfer int, @siparisAdedi int, @geciciTarih date, @iterator int = 1, @tipi char, @eldekiUrunAdedi int = 0, @geciciUrunAdedi int = 0, @quantity int, @kalan int = 0, @fromParties varchar(500), @new_idx int, @geciciSiparisAdedi int = 0, @eksikSiparisAdedi int = 0
 
---select @siparisAdedi = count(*) from #log where Tip='C' --Customerden gelen siparişlerin adedini  @siparisAdedi değişkenine atayan komut
+--select @siparisAdedi = count(*) from #log where Tip='C' --Customerden gelen sipariÅŸlerin adedini  @siparisAdedi deÄŸiÅŸkenine atayan komut
 
 --create table #temp_log (new_idx int IDENTITY(1,1), geciciTarih datetime, tipi varchar(1), partNo int, quantity int, kalan int, fromParties varchar(500))
 
---idx e göre döncem tipine bak sonra sonra adede bak karşılıyor mu karşılamıyor mu 
+--idx e gÃ¶re dÃ¶ncem tipine bak sonra sonra adede bak karÅŸÄ±lÄ±yor mu karÅŸÄ±lamÄ±yor mu 
 while @i <= 1000
 begin
 	
